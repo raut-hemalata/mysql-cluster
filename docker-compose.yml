@@ -1,23 +1,13 @@
 version:          "3.4"
 
-x-env-files:      &env-files
-  env_file:
-    - .env
-
-x-logging:        &logging
-  driver:         "json-file"
-  options:
-    max-size:     "100m"
-    max-file:     "5"
-
 volumes:
   cluster_data_vol:
 
 services:
   mysql-manager-1:
     image:        mysql-cluster
-    <<:           *env-files
-    logging:      *logging
+    environment:
+            MYSQL_ROOT_PASSWORD: hema1997
     networks:
       - db-network
     restart:      always
@@ -25,16 +15,16 @@ services:
 
   mysql-manager-2:
     image:        mysql-cluster
-    <<:           *env-files
-    logging:      *logging
+   environment:
+            MYSQL_ROOT_PASSWORD: hema1997
     networks:
       - db-network
     restart:      always
     command:      ndb_mgmd --ndb-nodeid=2
   mysql-manager-3:
     image:        mysql-cluster
-    <<:           *env-files
-    logging:      *logging
+    environment:
+            MYSQL_ROOT_PASSWORD: hema1997
     networks:
       - db-network
     restart:      always
@@ -42,8 +32,8 @@ services:
 
   data-node-1:
     image:        mysql-cluster
-    <<:           *env-files
-    logging:      *logging
+    environment:
+            MYSQL_ROOT_PASSWORD: hema1997
     depends_on: 
       - mysql-manager-1
       - mysql-manager-2
@@ -57,8 +47,8 @@ services:
 
   data-node-2:
     image:        mysql-cluster
-    <<:           *env-files
-    logging:      *logging
+    environment:
+            MYSQL_ROOT_PASSWORD: hema1997
     depends_on: 
       - mysql-manager-1
       - mysql-manager-2
@@ -72,8 +62,8 @@ services:
 
   data-node-3:
     image:        mysql-cluster
-    <<:           *env-files
-    logging:      *logging
+    environment:
+            MYSQL_ROOT_PASSWORD: hema1997
     depends_on:
       - mysql-manager-1
       - mysql-manager-2
@@ -87,8 +77,8 @@ services:
 
   mysql-server-1:
     image:        mysql-cluster
-    <<:           *env-files
-    logging:      *logging
+    environment:
+            MYSQL_ROOT_PASSWORD: hema1997
     depends_on: 
       - mysql-manager-1
       - mysql-manager-2
@@ -102,8 +92,8 @@ services:
 
   mysql-server-2:
     image:        mysql-cluster
-    <<:           *env-files
-    logging:      *logging
+   environment:
+            MYSQL_ROOT_PASSWORD: hema1997
     depends_on: 
       - mysql-manager-1
       - mysql-manager-2
@@ -117,8 +107,8 @@ services:
   
   mysql-server-3:
     image:        mysql-cluster
-    <<:           *env-files
-    logging:      *logging
+    environment:
+            MYSQL_ROOT_PASSWORD: hema1997
     depends_on:
       - mysql-manager-1
       - mysql-manager-2
