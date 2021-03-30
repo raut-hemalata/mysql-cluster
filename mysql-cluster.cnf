@@ -35,13 +35,13 @@ hostname=mysql-server-2
 [mysqld]
 NodeId=23
 hostname=mysql-server-3
-[mdb]
+[mysqld]
 NodeId=31
 hostname=mysql-server-1
-[mdb]
+[mysqld]
 NodeId=32
 hostname=mysql-server-2
-[mdb]
+[mysqld]
 NodeId=33
 hostname=mysql-server-3
 
