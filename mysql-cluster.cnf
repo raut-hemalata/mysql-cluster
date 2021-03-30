@@ -1,5 +1,5 @@
 [ndbd default]
-NoOfReplicas=2
+NoOfReplicas=3
 DataMemory=80M
 IndexMemory=18M
 [ndb_mgmd]
